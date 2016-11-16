@@ -11,3 +11,7 @@ Please contribute, file issues, and make PRs. More than anything I'm sure there 
 MIT
 
 [gh-page]: http://btholt.github.io/complete-intro-to-react/
+
+notes: 
+ - hand pick plugins for prod for when using babel
+ - radium - css in jsx, styles are inline in the end

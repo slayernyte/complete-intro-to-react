@@ -4,7 +4,7 @@ module.exports = {
   // node current directory, context tell webpack where to run everything from
   context: __dirname,
   // main file for the project
-  entry: './js/ClientApp.js',
+  entry: './js/ClientApp.jsx',
 
   output: {
     // where to put the bundle
