@@ -6,13 +6,15 @@ const MyTitle = require('./MyTitle')
 - No sibling components
   return ( h1() div()) - BAD
  */
-const MyFirstComponent = () => (
-  <div>
-    <MyTitle title='Whateves' color="rebeccaPurple" />
-    <MyTitle title='Yep' color="deepPink" />
-    <MyTitle title='Yep i guess so' color="#f0gdo6" />
+const App = () => (
+  <div className="app-container">
+    <div className="home-info">
+      <h1 className="title">svideo</h1>
+      <input type="text" className="search" placeholder="search"/>
+      <button className="browse-all"> or browse all</button>
+    </div>
   </div>
 )
 
 
-ReactDOM.render(<MyFirstComponent/>, document.getElementById('app'))
+ReactDOM.render(<App/>, document.getElementById('app'))
