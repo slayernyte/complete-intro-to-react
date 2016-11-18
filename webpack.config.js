@@ -19,10 +19,18 @@ module.exports = {
   stats: {
     colors: true, // show colors
     reasons: true, // verbose messaging
-    chunks : false // TODO
+    chunks: false // TODO
   },
   // external module that webpack should use
   module: {
+    // these get loaded first, compiled code should be run though lint
+    preLoaders: [
+      {
+        test: /\.jsx?$/,
+        loader: 'eslint-loader',
+        exclude: /node_modules/
+      }
+    ],
     // array of extra build steps, build pipeline
     loaders: [
       {
@@ -30,6 +38,10 @@ module.exports = {
         test: /\.jsx?$/,
         // run it through this
         loader: 'babel-loader'
+      },
+      {
+        test: /\.json$/,
+        loader: 'json-loader'
       }
     ]
   }

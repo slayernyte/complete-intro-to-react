@@ -15,3 +15,4 @@ MIT
 notes: 
  - hand pick plugins for prod for when using babel
  - radium - css in jsx, styles are inline in the end
+ - React router does not speak json natively
