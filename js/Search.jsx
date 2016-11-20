@@ -7,6 +7,7 @@ const ShowCard = require('./ShowCard')
 
 // Search is automagicly bound to this for you
 const Search = React.createClass({
+  // really should do this but don't have to
   getInitialState () {
     // class syntax, this is done in the instructor
     return {
@@ -24,7 +25,7 @@ const Search = React.createClass({
     return (
       <div className="container">
         <header className="header">
-          <h1 className="brand">s video</h1>
+          <h1 className="brand">svideo</h1>
           <input type="text"
             className="search-input"
             placeholder="search"
@@ -39,8 +40,7 @@ const Search = React.createClass({
             // set it to uppercase to normalize
             // set the search term to uppercase and use it as the argument of indexOf
             // if the search term is found in the tile + description string, return it
-            .filter((show) => `${show.title} ${show.description}`
-              .toUpperCase()
+            .filter((show) => `${show.title} ${show.description}`.toUpperCase()
               .indexOf(this.state.searchTerm.toUpperCase()) >= 0)
             .map((show) => (
             // spread operator
