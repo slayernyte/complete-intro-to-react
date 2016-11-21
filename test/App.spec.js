@@ -28,6 +28,7 @@ describe('<Search />', () => {
     input.node.value = 'house'
     input.simulate('change')
     expect(wrapper.state('searchTerm')).to.equal('house')
+    // indirect testing - not he best test
     expect(wrapper.find('.show-card').length).to.equal(2)
   })
 })

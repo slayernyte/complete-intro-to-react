@@ -1,6 +1,6 @@
 const React = require('react')
-const data = require('../public/data')
 const ShowCard = require('./ShowCard')
+const {object} = React.PropTypes
 
 // This does not have auto-binding unlike react createClass
 // - class Search extends React.Component {
@@ -13,6 +13,9 @@ const Search = React.createClass({
     return {
       searchTerm: ''
     }
+  },
+  propsTypes: {
+    route: object
   },
   // synthetic event
   handleSearchTermEvent (ev) {
@@ -34,7 +37,7 @@ const Search = React.createClass({
           />
         </header>
         <div className="shows">
-          {data.shows
+          {this.props.route.shows
           // if the search term is anywhere in my show title or description, then return true
             // make a string containing the serc title and description
             // set it to uppercase to normalize

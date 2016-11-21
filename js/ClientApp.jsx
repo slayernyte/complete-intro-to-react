@@ -6,7 +6,9 @@ const { Router, Route, hashHistory, IndexRoute } = require('react-router')
 const Search = require('./Search')
 // Bring In the Layout Component
 const Layout = require('./Layout')
+const Details = require('./Details')
 
+const { shows } = require('../public/data')
 const App = () => (
   /*
   Router has server routes. History is how back and forward buttons work.
@@ -19,7 +21,8 @@ const App = () => (
       so we use IndexRoute and get rid of pathe to show that this componet
       is loaded for the "index" */}
       <IndexRoute component={Landing} />
-      <Route path="/search" component={Search} />
+      <Route path='/search' component={Search} shows={shows} />
+      <Route path='/details/:id' component={Details} />
 
     </Route>
   </Router>
