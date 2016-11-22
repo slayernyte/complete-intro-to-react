@@ -9,23 +9,30 @@ const Layout = require('./Layout')
 const Details = require('./Details')
 
 const { shows } = require('../public/data')
-const App = () => (
-  /*
-  Router has server routes. History is how back and forward buttons work.
-  Using hash history for now
-  */
-  <Router history={hashHistory}>
-    {/* Nested Routes, we now have our layout wrapping the rest of the routes */}
-    <Route path="/" component={Layout}>
-      {/* We need to change this becasue the paths are the same as the parent
-      so we use IndexRoute and get rid of pathe to show that this componet
-      is loaded for the "index" */}
-      <IndexRoute component={Landing} />
-      <Route path='/search' component={Search} shows={shows} />
-      <Route path='/details/:id' component={Details} />
+const App = React.createClass({
+  assignShow (nextState, replace) {
+    const showArray = shows.filter((show) => show.imdbID === nextState.params.id)
+    if (showArray.length < 1) {
+      // send back to the home page instead
+      return replace('/')
+    }
 
-    </Route>
-  </Router>
-)
+    Object.assign(nextState.params, showArray[0])
+    return nextState
+  },
+  render () {
+    return (
+      <Router history={hashHistory}>
+        <Route path='/' component={Layout}>
+          <IndexRoute component={Landing} />
+          <Route path='/search' component={Search} shows={shows} />
+          {/* onEnter will get run everytime the route gets called */}
+          <Route path='/details/:id' component={Details} onEnter={this.assignShow} />
+
+        </Route>
+      </Router>
+    )
+  }
+})
 
 ReactDOM.render(<App />, document.getElementById('app'))

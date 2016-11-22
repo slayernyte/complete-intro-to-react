@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha --require test/helpers/setup.js",
-    "lint": "standard",
+    "lint": "standard --fix",
     "build": "webpack",
     "cover": "nyc --reporter=lcov --reporter=text --reporter=html --require babel-register --extension .jsx npm test",
     "watch": "webpack --watch"

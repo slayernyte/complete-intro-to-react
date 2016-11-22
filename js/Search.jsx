@@ -1,42 +1,33 @@
 const React = require('react')
 const ShowCard = require('./ShowCard')
-const {object} = React.PropTypes
+const { object } = React.PropTypes
+const Header = require('./Header')
 
-// This does not have auto-binding unlike react createClass
-// - class Search extends React.Component {
-
-// Search is automagicly bound to this for you
 const Search = React.createClass({
-  // really should do this but don't have to
   getInitialState () {
-    // class syntax, this is done in the instructor
     return {
       searchTerm: ''
     }
   },
-  propsTypes: {
+  propTypes: {
     route: object
   },
-  // synthetic event
-  handleSearchTermEvent (ev) {
-    this.setState({searchTerm: ev.target.value})
+  handleSearchTermChange (searchTerm) {
+    // same this as this.setState({ searchTerm: searchTerm })
+    this.setState({ searchTerm })
   },
   render () {
     // keypress fires a re-render but with out anything to change the value of the state
     // nothing changes in the input so value stays the same
     // TODO: React Link State Google
     return (
-      <div className="container">
-        <header className="header">
-          <h1 className="brand">svideo</h1>
-          <input type="text"
-            className="search-input"
-            placeholder="search"
-            value={this.state.searchTerm}
-            onChange={this.handleSearchTermEvent}
-          />
-        </header>
-        <div className="shows">
+      <div className='container'>
+        <Header
+          handleSearchTermChange={this.handleSearchTermChange}
+          searchTerm={this.state.searchTerm}
+          showSearch
+        />
+        <div className='shows'>
           {this.props.route.shows
           // if the search term is anywhere in my show title or description, then return true
             // make a string containing the serc title and description

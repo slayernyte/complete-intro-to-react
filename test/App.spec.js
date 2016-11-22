@@ -9,12 +9,12 @@ const {shows} = require('../public/data')
 
 describe('<Search />', () => {
   it('should render brand', () => {
-    const wrapper = shallow(<Search/>)
+    const wrapper = shallow(<Search />)
     // console.log(wrapper.debug())
-    expect(wrapper.contains(<h1 className="brand">svideo</h1>)).to.be.true
+    expect(wrapper.contains(<h1 className='brand'>svideo</h1>)).to.be.true
   })
   it('should render shows availible in the data', () => {
-    const wrapper = shallow(<Search/>)
+    const wrapper = shallow(<Search />)
     // find showcard in the search comp
     // does the number of show cards rendered equal the length of shows
     // no angle brackets on showcard because then it would look for an
@@ -23,7 +23,7 @@ describe('<Search />', () => {
   })
 
   it('should filter correctly based on the state of the search', () => {
-    const wrapper = mount(<Search/>)
+    const wrapper = mount(<Search />)
     const input = wrapper.find('.search-input')
     input.node.value = 'house'
     input.simulate('change')

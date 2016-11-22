@@ -6,11 +6,11 @@ const {Link} = require('react-router')
  return ( h1() div()) - BAD
  */
 const Landing = () => (
-  <div className="home-info">
-    <h1 className="title">svideo</h1>
-    <input type="text" className="search" placeholder="search" />
+  <div className='home-info'>
+    <h1 className='title'>svideo</h1>
+    <input type='text' className='search' placeholder='search' />
     {/* Internal to react-router, takes care of "magic" for you */}
-    <Link to="/search" className="browse-all"> or browse all</Link>
+    <Link to='/search' className='browse-all'> or browse all</Link>
   </div>
 )
 
