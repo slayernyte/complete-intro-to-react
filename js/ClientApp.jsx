@@ -7,7 +7,8 @@ const Search = require('./Search')
 // Bring In the Layout Component
 const Layout = require('./Layout')
 const Details = require('./Details')
-
+const { store } = require('./Store')
+const { Provider } = require('react-redux')
 const { shows } = require('../public/data')
 const App = React.createClass({
   assignShow (nextState, replace) {
@@ -22,15 +23,18 @@ const App = React.createClass({
   },
   render () {
     return (
-      <Router history={hashHistory}>
-        <Route path='/' component={Layout}>
-          <IndexRoute component={Landing} />
-          <Route path='/search' component={Search} shows={shows} />
-          {/* onEnter will get run everytime the route gets called */}
-          <Route path='/details/:id' component={Details} onEnter={this.assignShow} />
+      <Provider store={store}>
+        <Router history={hashHistory}>
+          <Route path='/' component={Layout}>
+            <IndexRoute component={Landing} />
+            <Route path='/search' component={Search} shows={shows} />
+            {/* onEnter will get run everytime the route gets called */}
+            <Route path='/details/:id' component={Details} onEnter={this.assignShow} />
 
-        </Route>
-      </Router>
+          </Route>
+        </Router>
+
+      </Provider>
     )
   }
 })
