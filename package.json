@@ -4,6 +4,7 @@
   "description": "A two day workshop on a complete intro to React",
   "main": "index.js",
   "scripts": {
+    "http":"http-server -p 8080 -a 127.0.0.1 ./",
     "test": "mocha --require test/helpers/setup.js",
     "lint": "standard --fix",
     "build": "webpack",
