@@ -7,12 +7,13 @@ const initialState = {
 }
 
 // default param value
-const rootReducer = (state = initialState, action) => {
+const rootReducer = (state = initialState, action) => { // default param
   switch (action.type) {
-    case SET_SEARCH_TERM:
+  case SET_SEARCH_TERM:
+      // TODO: Why not just pass the action.value, why pass the whole action object?
       return reduceSearchTerm(state, action)
-    // must return something or your state gets blown away
-    default:
+
+    default: // must return something or your state gets blown away
       return state
   }
 }
@@ -24,7 +25,6 @@ const reduceSearchTerm = (state, action) => {
 }
 
 // create store
-
 // const store = redux.createStore(rootReducer)
 const store = redux.createStore(rootReducer, initialState, redux.compose(
   typeof window === 'object' && typeof window.devToolsExtension !== 'undefined'
