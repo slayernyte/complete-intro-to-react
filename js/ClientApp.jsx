@@ -9,27 +9,16 @@ const Layout = require('./Layout')
 const Details = require('./Details')
 const { store } = require('./Store')
 const { Provider } = require('react-redux')
-const { shows } = require('../public/data')
 const App = React.createClass({
-  assignShow (nextState, replace) {
-    const showArray = shows.filter((show) => show.imdbID === nextState.params.id)
-    if (showArray.length < 1) {
-      // send back to the home page instead
-      return replace('/')
-    }
-
-    Object.assign(nextState.params, showArray[0])
-    return nextState
-  },
   render () {
     return (
       <Provider store={store}>
         <Router history={hashHistory}>
           <Route path='/' component={Layout}>
             <IndexRoute component={Landing} />
-            <Route path='/search' component={Search} shows={shows} />
+            <Route path='/search' component={Search} />
             {/* onEnter will get run everytime the route gets called */}
-            <Route path='/details/:id' component={Details} onEnter={this.assignShow} />
+            <Route path='/details/:id' component={Details} />
 
           </Route>
         </Router>
