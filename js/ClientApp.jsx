@@ -1,5 +1,4 @@
 const React = require('react')
-const ReactDOM = require('react-dom')
 const Landing = require('./Landing')
 // Now we need to include the IndexRoute as well
 const { Router, Route, hashHistory, IndexRoute } = require('react-router')
@@ -28,4 +27,4 @@ const App = React.createClass({
   }
 })
 
-ReactDOM.render(<App />, document.getElementById('app'))
+module.exports = App
