@@ -22,14 +22,14 @@ const Header = React.createClass({
         onChange={this.handleSearchTermEvent}
       />
     } else {
-      utilSpace = <h2 className="header-back">
-        <Link to="/search">Back</Link>
+      utilSpace = <h2 className='header-back'>
+        <Link to='/search'>Back</Link>
       </h2>
     }
     return (
       <header className='header'>
         <h1 className='brand'>
-          <Link to="/" className="brand-link">svideo</Link>
+          <Link to='/' className='brand-link'>svideo</Link>
         </h1>
         {utilSpace}
       </header>
