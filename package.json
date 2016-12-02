@@ -4,7 +4,7 @@
   "description": "A two day workshop on a complete intro to React",
   "main": "index.js",
   "scripts": {
-    "http":"http-server -p 8080 -a 127.0.0.1 ./",
+    "http": "http-server -p 8080 -a 127.0.0.1 ./",
     "test": "mocha --require test/helpers/setup.js",
     "lint": "standard --fix",
     "build": "webpack",
@@ -17,6 +17,7 @@
     "axios": "0.9.1",
     "express": "4.13.4",
     "lodash": "4.6.1",
+    "node-ensure": "0.0.0",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-redux": "^4.4.0",

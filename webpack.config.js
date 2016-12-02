@@ -10,7 +10,8 @@ module.exports = {
     // where to put the bundle
     path: path.join(__dirname, '/public'),
     // name of the bundled file
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    publicPath: '/public/'
   },
   resolve: {
     // in order, require resolve extentions to look for
@@ -19,7 +20,7 @@ module.exports = {
   stats: {
     colors: true, // show colors
     reasons: true, // verbose messaging
-    chunks: false // TODO
+    chunks: true // TODO
   },
   // external module that webpack should use
   module: {

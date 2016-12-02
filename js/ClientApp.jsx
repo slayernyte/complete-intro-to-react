@@ -1,38 +1,61 @@
 const React = require('react')
-const Landing = require('./Landing')
+// const Landing = require('./Landing')
 // Now we need to include the IndexRoute as well
-const { Router, Route, browserHistory, IndexRoute } = require('react-router')
-const Search = require('./Search')
+const { Router, browserHistory } = require('react-router')
+// const Search = require('./Search')
 // Bring In the Layout Component
 const Layout = require('./Layout')
-const Details = require('./Details')
+// const Details = require('./Details')
 const { store } = require('./Store')
 const { Provider } = require('react-redux')
-const myRoutes = () => {
-  return (
-    <Route path='/' component={Layout}>
-      <IndexRoute component={Landing} />
-      <Route path='/search' component={Search} />
-      {/* onEnter will get run everytime the route gets called */}
-      <Route path='/details/:id' component={Details} />
 
-    </Route>
-  )
+if (typeof module !== 'undefined' && module.require) {
+  if (typeof require.ensure === 'undefined') {
+    require.ensure = require('node-ensure') // shim for nodejs
+  }
+}
+
+const rootRoute = {
+  component: Layout,
+  path: '/',
+  indexRoute: {
+    getComponent (location, cb) {
+      require.ensure([], () => {
+        cb(null, require('./Landing'))
+      })
+    }
+  },
+  childRoutes: [
+    {
+      path: 'search',
+      getComponent (location, cb) {
+        require.ensure([], () => {
+          cb(null, require('./Search'))
+        })
+      }
+    },
+    {
+      path: 'details/:id',
+      getComponent (location, cb) {
+        require.ensure([], () => {
+          cb(null, require('./Details'))
+        })
+      }
+    }
+  ]
 }
 
 const App = React.createClass({
   render () {
     return (
       <Provider store={store}>
-        <Router history={browserHistory}>
-          {myRoutes()}
-        </Router>
-
+        <Router history={browserHistory} routes={rootRoute} />
       </Provider>
     )
   }
 })
 
-App.Routes = myRoutes
+App.Routes = rootRoute
+App.History = browserHistory
 
 module.exports = App
